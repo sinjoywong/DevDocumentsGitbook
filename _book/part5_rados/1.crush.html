@@ -1,0 +1,1219 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>5.1 CRUSH算法 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../readme.html">
+            
+                <a href="../readme.html">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../part1_object_object/README.md">
+            
+                <span>
+            
+                    
+                    第一章:对象及其元数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../part1_object/1.put_object.html">
+            
+                <a href="../part1_object/1.put_object.html">
+            
+                    
+                    1.1 对象上传与其元数据管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../part1_object/2.copy_object.html">
+            
+                <a href="../part1_object/2.copy_object.html">
+            
+                    
+                    1.2 CopyObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../part1_object/3.post_object.html">
+            
+                <a href="../part1_object/3.post_object.html">
+            
+                    
+                    1.3 表单上传对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../part1_object/4.scrub.html">
+            
+                <a href="../part1_object/4.scrub.html">
+            
+                    
+                    1.4 scrub
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../part1_object/5.SSE.html">
+            
+                <a href="../part1_object/5.SSE.html">
+            
+                    
+                    1.5 服务器加密SSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../part1_object/6.rgw_dns_name.html">
+            
+                <a href="../part1_object/6.rgw_dns_name.html">
+            
+                    
+                    1.6 rgw_dns_name
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../part1_object/7.lifecycle.html">
+            
+                <a href="../part1_object/7.lifecycle.html">
+            
+                    
+                    1.7 lifecycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../part2_bucket/">
+            
+                <a href="../part2_bucket/">
+            
+                    
+                    第二章:桶及其元数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../part2_bucket/1.list_bucket.html">
+            
+                <a href="../part2_bucket/1.list_bucket.html">
+            
+                    
+                    2.1 list bucket的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../part3_access_control_access_control/README.md">
+            
+                <span>
+            
+                    
+                    第三章:桶与对象的权限管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../part3_access_control/1.bucket_acl_object_acl.html">
+            
+                <a href="../part3_access_control/1.bucket_acl_object_acl.html">
+            
+                    
+                    3.1 ACL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../part3_access_control/2.bucket_policy.html">
+            
+                <a href="../part3_access_control/2.bucket_policy.html">
+            
+                    
+                    3.2 Policy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../part3_access_control/3.sts.html">
+            
+                <a href="../part3_access_control/3.sts.html">
+            
+                    
+                    3.3 STS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../part4_monitor/">
+            
+                <a href="../part4_monitor/">
+            
+                    
+                    第四章:集群监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第五章:PG到OSD
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.7.1" data-path="1.crush.html">
+            
+                <a href="1.crush.html">
+            
+                    
+                    5.1 CRUSH算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >5.1 CRUSH算法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="51-crush&#x7B97;&#x6CD5;">5.1 CRUSH&#x7B97;&#x6CD5;</h1>
+<p><a href="https://www.dovefi.com/post/&#x6DF1;&#x5165;&#x7406;&#x89E3;crush4pg&#x81F3;osd&#x7684;crush&#x7B97;&#x6CD5;&#x6E90;&#x7801;&#x5206;&#x6790;/" target="_blank">https://www.dovefi.com/post/&#x6DF1;&#x5165;&#x7406;&#x89E3;crush4pg&#x81F3;osd&#x7684;crush&#x7B97;&#x6CD5;&#x6E90;&#x7801;&#x5206;&#x6790;/</a></p>
+<h1 id="&#x6DF1;&#x5165;&#x7406;&#x89E3;ceph-crush4&#x2014;pg&#x81F3;osd&#x7684;crush&#x7B97;&#x6CD5;&#x6E90;&#x7801;&#x5206;&#x6790;">&#x6DF1;&#x5165;&#x7406;&#x89E3;ceph crush(4)&#x2014;PG&#x81F3;OSD&#x7684;crush&#x7B97;&#x6CD5;&#x6E90;&#x7801;&#x5206;&#x6790;</h1>
+<h3 id="&#x4E00;-&#x524D;&#x8A00;">&#x4E00;. &#x524D;&#x8A00;</h3>
+<hr>
+<p>&#x4E0A;&#x4E00;&#x7BC7;<a href="https://www.dovefi.com/post/&#x6DF1;&#x5165;&#x7406;&#x89E3;crush3object&#x81F3;pg&#x6620;&#x5C04;&#x6E90;&#x7801;&#x5206;&#x6790;/" target="_blank">&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3;crush(3)&#x2014;Object&#x81F3;PG&#x6620;&#x5C04;&#x6E90;&#x7801;&#x5206;&#x6790;&#x300B;</a>&#xFF0C;&#x5206;&#x6790;&#x4E86; Object&#x81F3;PG&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4E00;&#x7BC7;&#x662F;&#x672C;&#x7CFB;&#x5217; <strong>&#x6700;&#x91CD;&#x8981;</strong> &#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x4E5F;&#x662F;crush&#x7684;&#x6838;&#x5FC3;&#xFF0C;<strong>crush&#x7B97;&#x6CD5;</strong></p>
+<h3 id="&#x4E8C;-crush&#x7684;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784;">&#x4E8C;. crush&#x7684;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784;</h3>
+<hr>
+<p>&#x5728;&#x5F00;&#x59CB;&#x5206;&#x6790;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x6E29;&#x4E60;&#x4E0B;&#x6D4B;&#x8BD5;&#x96C6;&#x7FA4;&#x7684;crush map&#xFF0C;&#x56E0;&#x4E3A;crush &#x7B97;&#x6CD5;&#x662F;&#x5B8C;&#x5168;&#x6309;&#x7167;crush map&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#x7684;</p>
+<ul>
+<li><h4 id="1-&#x67E5;&#x770B;&#x6D4B;&#x8BD5;&#x96C6;&#x7FA4;&#x7684;crush-map">1. &#x67E5;&#x770B;&#x6D4B;&#x8BD5;&#x96C6;&#x7FA4;&#x7684;crush map</h4>
+<pre><code># begin crush map
+tunable choose_local_tries 0
+tunable choose_local_fallback_tries 0
+tunable choose_total_tries 50
+tunable chooseleaf_descend_once 1
+tunable chooseleaf_vary_r 1
+tunable chooseleaf_stable 1
+tunable straw_calc_version 1
+tunable allowed_bucket_algs 54
+
+# devices
+device 0 osd.0 class ssd
+device 1 osd.1 class ssd
+device 2 osd.2 class ssd
+
+# types
+type 0 osd
+type 1 host
+type 2 chassis
+type 3 rack
+type 4 row
+type 5 pdu
+type 6 pod
+type 7 room
+type 8 datacenter
+type 9 region
+type 10 root
+
+# buckets
+host host1 {
+    id -2        # do not change unnecessarily
+    id -3 class ssd        # do not change unnecessarily
+    # weight 3.000
+    alg straw2
+    hash 0    # rjenkins1
+    item osd.0 weight 1.000
+    item osd.1 weight 1.000
+    item osd.2 weight 1.000
+}
+root default {
+    id -1        # do not change unnecessarily
+    id -4 class ssd        # do not change unnecessarily
+    # weight 3.000
+    alg straw2
+    hash 0    # rjenkins1
+    item host1 weight 3.000
+}
+
+# rules
+rule replicated_rule {
+    id 0
+    type replicated
+    min_size 1
+    max_size 10
+    step take default
+    step choose firstn 0 type osd
+    step emit
+}
+
+# end crush map
+</code></pre><p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x770B;&#x770B;ceph &#x662F;&#x5982;&#x4F55;&#x5904;&#x7406; crush map&#x7684;&#x3002;</p>
+<hr>
+</li>
+<li><h4 id="2-crush-map-&#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784;-&#x548C;crush-&#x7B97;&#x6CD5;&#x7684;&#x4ECB;&#x7ECD;">2. crush map &#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784; &#x548C;crush &#x7B97;&#x6CD5;&#x7684;&#x4ECB;&#x7ECD;</h4>
+<ul>
+<li><strong>2.1&#x3001;crush map &#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784;</strong> </li>
+</ul>
+<p>crush &#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x6E90;&#x7801;&#xFF0C;&#x662F;&#x6BD4;&#x8F83;&#x72EC;&#x7ACB;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x76F8;&#x6BD4;ceph&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x7684;&#x6E90;&#x7801;&#x4E5F;&#x7B80;&#x5355;&#x5F88;&#x591A;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#xFF0C;crush &#x6A21;&#x5757;&#x7684;&#x6587;&#x4EF6;&#x8BF4;&#x660E;</p>
+<p>crush &#x6A21;&#x5757;&#x7684;&#x6E90;&#x7801;&#x8DEF;&#x5F84;&#x4E3A; <strong>src/crush</strong>, &#x5176;&#x4E2D;</p>
+<blockquote>
+<ul>
+<li><strong>crush.h &#x548C; crush.c</strong> : <em>crush map</em> &#x7684;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784;</li>
+<li><strong>build.h &#x548C; build.c</strong> : &#x5B9E;&#x73B0;&#x4E86;&#x5982;&#x4F55;&#x6784;&#x9020; <em>crush_map</em> &#x6570;&#x636E;&#x7ED3;&#x6784;</li>
+<li><strong>CrushCompiler.h &#x548C; CrushCompiler.cc</strong> : &#x89E3;&#x6790; <em>crush_map</em> &#x7684;&#x8BCD;&#x6CD5;&#x548C;&#x8BED;&#x4E49;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x7FFB;&#x8BD1;crush map &#x6587;&#x4EF6;</li>
+<li><strong>CrushWarpper</strong> : &#x662F;CRUSH&#x6838;&#x5FC3;&#x5B9E;&#x73B0;&#x7684;&#x5C01;&#x88C5;</li>
+<li><strong>mapper.h &#x548C; mapper.c</strong> : CRUSH &#x7B97;&#x6CD5;&#x7684;&#x6838;&#x5FC3;&#x5B9E;&#x73B0;</li>
+</ul>
+</blockquote>
+<p>&#x8FD8;&#x8BB0;&#x5F97;&#x5728;&#x7B2C;&#x4E00;&#x7BC7;&#x535A;&#x6587;&#x4E2D;&#x63D0;&#x5230;&#x8FC7;crush map &#x7531;5&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF1A;tunable &#x53C2;&#x6570;, device, type, bucket, rule&#xFF0C;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x7ED3;&#x6784;&#x662F;&#x8FD9;&#x6837;&#x7684;</p>
+<p><strong>(&#x56FE;&#x7247;&#x592A;&#x5C0F;&#x53F3;&#x952E;&#x65B0;&#x6807;&#x7B7E;&#x9875;&#x6253;&#x5F00;&#x67E5;&#x770B;)</strong></p>
+<p><img src="../../DevDocumentsPersonal/CEPH/%25E5%25AF%25B9%25E8%25B1%25A1%25E7%25AE%25A1%25E7%2590%2586/.Ceph%2520CRUSH%25E7%25AE%2597%25E6%25B3%2595.assets/crush%2520map%2520struct.jpg" alt="image"></p>
+<p>&#x56FE;&#x7247;&#x4E2D;&#x8BF4;&#x660E;&#x7684;&#x5DEE;&#x4E0D;&#x591A;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x5BF9;&#x51E0;&#x4E2A;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x53D8;&#x91CF;&#x518D;&#x505A;&#x4E00;&#x4E9B;&#x89E3;&#x91CA;</p>
+<p><strong>struct crush_map</strong></p>
+<pre><code class="lang-c++"><span class="hljs-keyword">struct</span> crush_map {
+    <span class="hljs-comment">/*
+    *crush map &#x4E2D;&#x7684;&#x6240;&#x6709;bucket&#x90FD;&#x4FDD;&#x5B58;&#x5728;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x4E2D;&#xFF0C;
+    * buckets[i] &#x4E0B;&#x6807;i&#x8DDF;crush map&#x4E2D;bucket&#x7684;id&#x662F;&#x6709;&#x5173;&#x7CFB;&#x7684;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5173;&#x7CFB;&#x662F;
+    * -1 - i = bucket_id. &#x53CD;&#x8FC7;&#x6765;&#x5C31;&#x53EF;&#x4EE5;&#x6839;&#x636E;bucket id&#x62DB;&#x5230;&#x5BF9;&#x5E94;&#x7684;bucket&#x5B9E;&#x4F53;&#x4E86;
+    * bucket&#x7684;&#x5220;&#x9664; &#x5FC5;&#x987B;&#x4F7F;&#x7528; crush_remove_bucket()&#x51FD;&#x6570;&#x64CD;&#x4F5C;, &#x56E0;&#x4E3A;&#x53EF;&#x4EE5;
+    * &#x5220;&#x9664;&#xFF0C;&#x6240;&#x4EE5;buckets[i]&#x53EF;&#x80FD;&#x4F1A;&#x6709;NULL&#x7684;&#x60C5;&#x51B5; 
+    * bucket&#x7684;&#x6DFB;&#x52A0; &#x5FC5;&#x987B;&#x4F7F;&#x7528; crush_add_bucket()
+    * */</span>
+    <span class="hljs-keyword">struct</span> crush_bucket **buckets;
+    <span class="hljs-comment">// &#x6240;&#x6709;&#x7684;rule&#x89C4;&#x5219;</span>
+    <span class="hljs-keyword">struct</span> crush_rule **rules;
+    .
+    .
+    .
+}
+</code></pre>
+<p><strong>struct crush_bucket</strong></p>
+<pre><code class="lang-c++"><span class="hljs-keyword">struct</span> crush_bucket {
+    <span class="hljs-comment">/* items &#x4FDD;&#x5B58;&#x7684;&#x662F;&#x5B50;bucket &#x7684;id , &#x5982;&#x679C;&#x662F;&#x5C0F;&#x4E8E;0&#x7684;&#x4EE3;&#x8868;&#x662F;bucket&#xFF0C;
+    &#x5927;&#x4E8E;&#x7B49;&#x4E8E;0&#x4EE3;&#x8868;&#x662F;osd */</span>
+    __s32 *items;
+    .
+    .
+    .
+}
+</code></pre>
+<ul>
+<li><strong>2.2&#x3001;CRUSH &#x7B97;&#x6CD5;&#x4ECB;&#x7ECD;</strong> </li>
+</ul>
+<p>&#x51FD;&#x6570;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="https://dev-documents-persona-1252897966.cos.ap-nanjing.myqcloud.com/do_rule-20220410173221835.jpeg" alt="image"></p>
+<p>&#x8FD9;&#x91CC;&#x7B80;&#x5355;&#x8BF4;&#x660E;&#x4E0B;crush&#x9009;&#x62E9;bucket&#x7684;&#x8FC7;&#x7A0B;</p>
+<p>crush &#x4F2A;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x7684;&#x51B3;&#x5B9A;&#x6027;&#x53C2;&#x6570;&#x6709;3&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>hash(pgid, poolid)&#x503C; <em>pps</em> &#x8FD9;&#x91CC;&#x79F0;&#x4E3A; <strong>x</strong>, &#x662F;&#x56FA;&#x5B9A;&#x4E0D;&#x53D8;&#x7684;&#xFF0C;</li>
+<li>&#x968F;&#x673A;&#x56E0;&#x5B50; <strong>r</strong> , <strong>r</strong> &#x521D;&#x59CB;&#x503C;&#x4E3A; <em>0</em> &#xFF0C;&#x5728;&#x9009;&#x62E9;&#x51FA;&#x4E00;&#x4E2A;&#x76EE;&#x6807;bucket&#x6216;&#x8005;osd&#x4E4B;&#x540E;&#xFF0C;&#x4F1A; <em>+1</em> &#xFF0C; &#x5982;&#x679C;&#x9009;&#x62E9;&#x51FA;&#x6765;&#x7684;&#x6709;&#x51B2;&#x7A81;&#xFF0C;r &#x4E5F;&#x8FD8;&#x4F1A;&#x52A0;1&#xFF0C;&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x9009;&#x62E9;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x3002;</li>
+<li>&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x5C31;&#x662F;osd&#x7684;reweight &#x503C;&#xFF0C;&#x5728;&#x9009;&#x51FA;osd&#x540E;&#xFF0C;&#x4F1A;&#x9488;&#x5BF9;osd&#x7684;reweight&#x518D;&#x505A;&#x4E00;&#x6B21;&#x8BA1;&#x7B97;&#xFF0C;&#x51B3;&#x5B9A;&#x4E86;&#x9009;&#x4E2D;&#x7684;&#x6982;&#x7387;&#x3002; </li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x51FA;&#x73B0;&#x4E00;&#x76F4;&#x65E0;&#x6CD5;&#x9009;&#x62E9;&#x4E0A;&#x7684;&#x800C;&#x51FA;&#x73B0;&#x6B7B;&#x5FAA;&#x73AF;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x5C1D;&#x8BD5;&#x6B21;&#x6570;&#x505A;&#x9650;&#x5236;&#xFF0C;&#x7531; <strong>choos_total_tries</strong> &#x51B3;&#x5B9A;&#xFF0C; &#x540C;&#x65F6;&#x6545;&#x969C;&#x57DF;&#x6A21;&#x5F0F;&#x4E0B;&#x4F1A;&#x6709;&#x9012;&#x5F52;&#x8C03;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x518D;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x8FD8;&#x4EE5; <strong>choos_total_tries</strong> &#x4F5C;&#x4E3A;&#x5C1D;&#x8BD5;&#x9650;&#x5236;&#x7684;&#x8BDD;&#xFF0C;&#x5C1D;&#x8BD5;&#x6B21;&#x6570;&#x5C31;&#x4F1A;&#x6210;&#x500D;&#x589E;&#x957F;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;L&#x7248;&#x7684;&#x7B97;&#x6CD5;&#x4E2D;&#x662F;&#x901A;&#x8FC7; <strong>chooseleaf_descend_once</strong> &#x5E03;&#x5C14;&#x503C;&#x6765;&#x51B3;&#x5B9A;&#x662F; <strong>&#x88AB;&#x8C03;&#x7528;&#x8005;</strong> &#x662F;&#x5426;&#x8FDB;&#x884C;&#x91CD;&#x8BD5;&#x7684;&#x3002;</p>
+<p><em>&#x8FD9;&#x91CC;&#x501F;&#x7528;&#x300A;CEPH &#x4E4B;rados &#x8BBE;&#x8BA1;&#x539F;&#x7406;&#x548C;&#x5B9E;&#x73B0;&#x300B;&#x4E00;&#x4E66;&#x4E2D;&#x7684;&#x793A;&#x610F;&#x56FE;&#x89E3;&#x6790;firstn&#x9009;&#x62E9;&#x7684;&#x8FC7;&#x7A0B;</em><img src="../../DevDocumentsPersonal/CEPH/%25E5%25AF%25B9%25E8%25B1%25A1%25E7%25AE%25A1%25E7%2590%2586/.Ceph%2520CRUSH%25E7%25AE%2597%25E6%25B3%2595.assets/firstn.png" alt="image"></p>
+</li>
+</ul>
+<h3 id="&#x4E09;-crush-&#x7B97;&#x6CD5;&#x6E90;&#x7801;&#x5206;&#x6790;">&#x4E09;. CRUSH &#x7B97;&#x6CD5;&#x6E90;&#x7801;&#x5206;&#x6790;</h3>
+<hr>
+<ul>
+<li><h4 id="1-&#x51FD;&#x6570;&#x8BE6;&#x89E3;">1. &#x51FD;&#x6570;&#x8BE6;&#x89E3;</h4>
+<p>&#x5728;<a href="https://www.dovefi.com/post/&#x6DF1;&#x5165;&#x7406;&#x89E3;crush3object&#x81F3;pg&#x6620;&#x5C04;&#x6E90;&#x7801;&#x5206;&#x6790;/" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;crush(3)&#x2014;Object&#x81F3;PG&#x6620;&#x5C04;&#x6E90;&#x7801;&#x5206;&#x6790;</a>&#x8FD9;&#x4E00;&#x7BC7;&#x4E2D;&#xFF0C;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6; <em>hash(pgid, poolid)</em> &#x7684;hash &#x503C; <strong>pps</strong></p>
+<ul>
+<li><strong>1.1&#x3001;_pg_to_raw_osds</strong></li>
+</ul>
+</li>
+</ul>
+<pre><code>  void OSDMap::_pg_to_raw_osds(
+    const pg_pool_t&amp; pool, pg_t pg,
+    vector&lt;int&gt; *osds,
+    ps_t *ppps) const
+  {
+    // map to osds[]
+    ps_t pps = pool.raw_pg_to_pps(pg);  // placement ps &#x5230;&#x6B64;&#x5C31;&#x83B7;&#x53D6;&#x4E86; &#x7531; pgid + poolid &#x7684;hash&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x552F;&#x4E00;&#x786E;&#x5B9A;PG
+    unsigned size = pool.get_size();
+
+    // what crush rule?
+    int ruleno = crush-&gt;find_rule(pool.get_crush_rule(), pool.get_type(), size);  //   &#x6839;&#x636E;pool &#x83B7;&#x53D6;crush &#x4E2D;&#x7684;rule id &#x4E3A;&#x4E0B;&#x4E00;&#x6B65; pg &#x6620;&#x5C04; osd &#x505A;&#x51C6;&#x5907;
+    if (ruleno &gt;= 0)
+      /* osd_weight &#x662F;&#x6240;&#x6709;osd reweight&#x7684;&#x503C;&#xFF0C;0x10000 = &quot;in&quot;, 0 = &quot;out&quot; 
+      *&#x5728; is_out&#x68C0;&#x6D4B;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x68C0;&#x6D4B;&#xFF0C;&#x5E76;&#x4E14;&#x51B3;&#x5B9A;&#x4E86;osd&#x88AB;&#x9009;&#x4E2D;&#x7684;&#x6982;&#x7387;
+      **/
+      crush-&gt;do_rule(ruleno, pps, *osds, size, osd_weight, pg.pool());
+
+    _remove_nonexistent_osds(pool, *osds);
+
+    if (ppps)
+      *ppps = pps;
+  }
+</code></pre><p>  &#x63A5;&#x7740;<em>crush-&gt;do_rule(ruleno, pps,</em> <em>*osds, size, osd_weight, pg.pool())</em> &#x6B63;&#x5F0F;&#x5F00;&#x59CB;&#x8BA1;&#x7B97; PG &#x5230; osd&#x7684;&#x6620;&#x5C04;</p>
+<p>  &#x8FD9;&#x91CC;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x662F; <strong>osd_weight</strong>, &#x8FD9;&#x662F;&#x6240;&#x6709; <strong>osd reweight</strong> &#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5728;&#x540E;&#x9762;&#x7B97;&#x6CD5;&#x9009;&#x62E9;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x7528;&#x5230;,&#x8FD9;&#x91CC;&#x6D4B;&#x8BD5;&#x96C6;&#x7FA4;&#x4E09;&#x4E2A;osd &#x7684;reweigh&#x5B58;&#x50A8;&#x4E3A;{65536, 65536, 65536}</p>
+<hr>
+<ul>
+<li><p><strong>1.1.1&#x3001;do_rule</strong> </p>
+<pre><code>void do_rule(int rule, int x, vector&lt;int&gt;&amp; out, int maxout,
+         const WeightVector&amp; weight,
+         uint64_t choose_args_index) const {
+  int rawout[maxout];
+  char work[crush_work_size(crush, maxout)];
+  crush_init_workspace(crush, work); // &#x521D;&#x59CB;&#x5316;crush &#x7684;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;
+  crush_choose_arg_map arg_map = choose_args_get_with_fallback(
+    choose_args_index);   
+  int numrep = crush_do_rule(crush, rule, x, rawout, maxout, &amp;weight[0],
+                 weight.size(), work, arg_map.args); // &#x5F00;&#x59CB;&#x6839;&#x636E;crush &#x548C;pps &#x8BA1;&#x7B97;
+  if (numrep &lt; 0)
+    numrep = 0;
+  out.resize(numrep);
+  for (int i=0; i&lt;numrep; i++)
+    out[i] = rawout[i];
+}
+</code></pre><p><em>crush_do_rule</em> &#x662F;crush map&#x7684;&#x4E2D;rule&#x7684;&#x57FA;&#x672C;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x4F1A;&#x6839;&#x636E;rule &#x7684;step &#x4E00;&#x6B65;&#x6B65;&#x6267;&#x884C;&#xFF0C;</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>1.1.1.1&#x3001;crush_do_rule</strong> </p>
+<p>```c++
+/**</p>
+<ul>
+<li>crush_do_rule - calculate a mapping with the given input and rule</li>
+<li>@map: the crush_map</li>
+<li>@ruleno: the rule id</li>
+<li>@x: hash input</li>
+<li>@result: pointer to result vector</li>
+<li>@result_max: maximum result size</li>
+<li>@weight: weight vector (for map leaves)    // &#x53F6;&#x5B50;&#x8282;&#x70B9;&#x5C31;&#x662F;osd</li>
+<li>@weight_max: size of weight vector    </li>
+<li><p>@cwin: Pointer to at least map-&gt;working_size bytes of memory or NULL.
+<em>/
+int crush_do_rule(const struct crush_map </em>map,</p>
+<pre><code>  int ruleno, int x, int *result, int result_max,
+  const __u32 *weight, int weight_max,
+  void *cwin, const struct crush_choose_arg *choose_args)
+</code></pre><p>{
+int result_len;
+struct crush_work <em>cw = cwin;
+int </em>a = (int <em>)((char </em>)cw + map-&gt;working_size);
+int <em>b = a + result_max;
+int </em>c = b + result_max;
+int <em>w = a;
+int </em>o = b;
+int recurse_to_leaf;    // &#x662F;&#x5426;&#x9012;&#x5F52;&#x5230;&#x53F6;&#x5B50;&#x8282;&#x70B9;
+int wsize = 0;
+int osize;              // &#x5F53;&#x524D;step &#x9009;&#x62E9;&#x51FA;&#x6765;&#x7684;&#x7ED3;&#x679C;&#x6570;&#x91CF;
+int <em>tmp;
+const struct crush_rule </em>rule;
+__u32 step;
+int i, j;
+int numrep;
+int out_size;
+/*</p>
+<ul>
+<li>the original choose_total_tries value was off by one (it</li>
+<li>counted &quot;retries&quot; and not &quot;tries&quot;).  add one.</li>
+<li>crush map &#x6587;&#x4EF6;&#x4E2D;&#x7684;choose_total_tries&#x53D8;&#x91CF;&#x662F;&#x91CD;&#x8BD5;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x603B;&#x6B21;&#x6570;&#x9700;&#x8981;+1
+<em>/
+int choose_tries = map-&gt;choose_total_tries + 1;
+int choose_leaf_tries = 0;
+/</em></li>
+<li>the local tries values were counted as &quot;retries&quot;, though,</li>
+<li>and need no adjustment
+*/
+int choose_local_retries = map-&gt;choose_local_tries;
+int choose_local_fallback_retries = map-&gt;choose_local_fallback_tries;</li>
+</ul>
+<p>int vary_r = map-&gt;chooseleaf_vary_r;
+int stable = map-&gt;chooseleaf_stable;</p>
+<p>if ((__u32)ruleno &gt;= map-&gt;max_rules) {</p>
+<pre><code>dprintk(&quot; bad ruleno %d\n&quot;, ruleno);
+return 0;
+</code></pre><p>}</p>
+<p>rule = map-&gt;rules[ruleno];
+result_len = 0;
+// &#x8FD9;&#x91CC;&#x5F00;&#x59CB;&#x5FAA;&#x73AF;&#x6267;&#x884C;rule&#x7684;&#x6BCF;&#x4E00;&#x6B65;
+for (step = 0; step &lt; rule-&gt;len; step++) {</p>
+<pre><code>int firstn = 0;        // &#x662F;&#x5426;&#x4F7F;&#x7528; firstn &#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x7B97;&#x6CD5;
+const struct crush_rule_step *curstep = &amp;rule-&gt;steps[step];
+
+switch (curstep-&gt;op) {
+case CRUSH_RULE_TAKE:    // &#x5F53;op &#x4E3A; take&#x7684;&#x65F6;&#x5019;&#x662F;&#x6CA1;&#x6709;arg2&#x7684;
+    // &#x5224;&#x65AD;&#x53C2;&#x6570;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;bucket&#x662F;&#x5426;&#x5B58;&#x5728;
+    if ((curstep-&gt;arg1 &gt;= 0 &amp;&amp;
+         curstep-&gt;arg1 &lt; map-&gt;max_devices) ||
+        (-1-curstep-&gt;arg1 &gt;= 0 &amp;&amp;            
+         -1-curstep-&gt;arg1 &lt; map-&gt;max_buckets &amp;&amp;    // &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x51FA; bucket&#x7684;id &#x662F;&#x6709;&#x987A;&#x5E8F;&#x7684;&#xFF0C;&#x4ECE;-1&#x5F00;&#x59CB;-n&#xFF0C;&#x5B58;&#x50A8;&#x5728;map&#x4E2D;&#x662F;0&#x81F3;&#x4E8E;n-1, 
+         map-&gt;buckets[-1-curstep-&gt;arg1])) {        // The bucket found at __buckets[i]__ must have a crush_bucket.id == -1-i 
+        w[0] = curstep-&gt;arg1;    // arg1 &#x5C31;&#x662F;bucket id&#xFF0C; &#x5C31;&#x662F;root &#x7684;id &#xFF0C;&#x4F5C;&#x4E3A;&#x4E0B;&#x4E00;step&#x5F00;&#x59CB;&#x7684;&#x70B9;
+        wsize = 1;
+    } else {
+        dprintk(&quot; bad take value %d\n&quot;, curstep-&gt;arg1);
+    }
+    break;
+// CRUSH_RULE_SET_* &#x76F8;&#x5173;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x7528;&#x6765;&#x8BBE;&#x7F6E;crush &#x53C2;&#x6570;&#x7684;
+case CRUSH_RULE_SET_CHOOSE_TRIES:
+    if (curstep-&gt;arg1 &gt; 0)
+        choose_tries = curstep-&gt;arg1;
+    break;
+
+case CRUSH_RULE_SET_CHOOSELEAF_TRIES:
+    if (curstep-&gt;arg1 &gt; 0)
+        choose_leaf_tries = curstep-&gt;arg1;
+    break;
+
+case CRUSH_RULE_SET_CHOOSE_LOCAL_TRIES:
+    if (curstep-&gt;arg1 &gt;= 0)
+        choose_local_retries = curstep-&gt;arg1;
+    break;
+
+case CRUSH_RULE_SET_CHOOSE_LOCAL_FALLBACK_TRIES:
+    if (curstep-&gt;arg1 &gt;= 0)
+        choose_local_fallback_retries = curstep-&gt;arg1;
+    break;
+
+case CRUSH_RULE_SET_CHOOSELEAF_VARY_R:
+    if (curstep-&gt;arg1 &gt;= 0)
+        vary_r = curstep-&gt;arg1;
+    break;
+
+case CRUSH_RULE_SET_CHOOSELEAF_STABLE:
+    if (curstep-&gt;arg1 &gt;= 0)
+        stable = curstep-&gt;arg1;
+    break;
+
+case CRUSH_RULE_CHOOSELEAF_FIRSTN:
+case CRUSH_RULE_CHOOSE_FIRSTN:
+    firstn = 1;
+    /* fall through */
+case CRUSH_RULE_CHOOSELEAF_INDEP:
+case CRUSH_RULE_CHOOSE_INDEP:
+    if (wsize == 0)
+        break;
+    // &#x5E26;&#x6709;CHOOSELEAF&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x8981;&#x9012;&#x5F52;&#x5230;&#x5B50;&#x8282;&#x70B9;&#x7684;
+    recurse_to_leaf =
+        curstep-&gt;op ==
+         CRUSH_RULE_CHOOSELEAF_FIRSTN ||
+        curstep-&gt;op ==
+        CRUSH_RULE_CHOOSELEAF_INDEP;
+
+    /* reset output */
+    osize = 0;        // osize &#x5F53;&#x524D;step&#x5DF2;&#x7ECF;&#x9009;&#x51FA;&#x6765;&#x7684;&#x6570;&#x91CF;
+
+    for (i = 0; i &lt; wsize; i++) {
+        int bno;                // bucket id
+        numrep = curstep-&gt;arg1; // &#x8FD9;&#x4E2A;numrep &#x662F;&#x8981;&#x9009;&#x62E9;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x53EF;&#x80FD;&#x4E3A;&#x8D1F;&#x6570;
+        if (numrep &lt;= 0) {            
+            numrep += result_max;
+            if (numrep &lt;= 0)
+                continue;
+        }
+        j = 0;
+        /* make sure bucket id is valid */
+        bno = -1 - w[i];
+        if (bno &lt; 0 || bno &gt;= map-&gt;max_buckets) {
+            // w[i] is probably CRUSH_ITEM_NONE
+            dprintk(&quot;  bad w[i] %d\n&quot;, w[i]);
+            continue;
+        }
+        if (firstn) {                        // &#x5982;&#x679C;&#x4F7F;&#x7528;&#x7684;&#x662F;  firstn &#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x7B97;&#x6CD5;
+            int recurse_tries;
+            if (choose_leaf_tries)
+                recurse_tries =
+                    choose_leaf_tries;
+            else if (map-&gt;chooseleaf_descend_once)    // &#x8FD9;&#x91CC;&#x4E00;&#x76F4;&#x90FD;&#x662F;&#x8BBE;&#x7F6E;&#x4E3A;1&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4F1A;&#x9020;&#x6210;&#x4E00;&#x4E9B;&#x8FB9;&#x754C;&#x95EE;&#x9898;
+                recurse_tries = 1;
+            else
+                recurse_tries = choose_tries;
+            osize += crush_choose_firstn(
+                map,
+                cw,
+                map-&gt;buckets[bno],
+                weight, weight_max,
+                x, numrep,
+                curstep-&gt;arg2,
+                o+osize, j,
+                result_max-osize,
+                choose_tries,
+                recurse_tries,
+                choose_local_retries,
+                choose_local_fallback_retries,
+                recurse_to_leaf,
+                vary_r,
+                stable,
+                c+osize,
+                0,
+                choose_args);
+        } else {
+            out_size = ((numrep &lt; (result_max-osize)) ?
+                    numrep : (result_max-osize));
+            crush_choose_indep(
+                map,
+                cw,
+                map-&gt;buckets[bno],
+                weight, weight_max,
+                x, out_size, numrep,
+                curstep-&gt;arg2,
+                o+osize, j,
+                choose_tries,
+                choose_leaf_tries ?
+                   choose_leaf_tries : 1,
+                recurse_to_leaf,
+                c+osize,
+                0,
+                choose_args);
+            osize += out_size;
+        }
+    }
+
+    if (recurse_to_leaf)
+        /* copy final _leaf_ values to output set */
+        memcpy(o, c, osize*sizeof(*o));
+
+    /* swap o and w arrays */
+    tmp = o;
+    o = w;
+    w = tmp;        // &#x4E0A;&#x4E00;step&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E0B;&#x4E00;step&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x5728;&#x4E0A;&#x4E00;&#x6B65;&#x9009;&#x62E9;&#x597D;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x5728;&#x8FDB;&#x884C;&#x4E0B;&#x4E00;&#x6B65;&#x7684;&#x9009;&#x62E9;
+    wsize = osize;
+    break;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<pre><code>      case CRUSH_RULE_EMIT:
+          for (i = 0; i &lt; wsize &amp;&amp; result_len &lt; result_max; i++) {
+              result[result_len] = w[i];
+              result_len++;
+          }
+          wsize = 0;
+          break;
+
+      default:
+          dprintk(&quot; unknown op %d at step %d\n&quot;,
+              curstep-&gt;op, step);
+          break;
+      }
+  }
+
+  return result_len;
+</code></pre><p>  }</p>
+<pre><code>
+  crush_do_rule &#x4F1A;&#x6839;&#x636E;&#x6BCF;&#x4E00;&#x6B65;step &#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x91CC;&#x7279;&#x522B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C; **&#x5F53;&#x524D;step&#x7684;&#x8D77;&#x70B9;&#x90FD;&#x662F;&#x5728;&#x4E0A;&#x4E00;step&#x7684;&#x5F97;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x4E0B;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x7684;**
+</code></pre><p>  /<em> swap o and w arrays </em>/
+          tmp = o;
+          o = w;
+          w = tmp;        // &#x4E0A;&#x4E00;step&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E0B;&#x4E00;step&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x5728;&#x4E0A;&#x4E00;&#x6B65;&#x9009;&#x62E9;&#x597D;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x5728;&#x8FDB;&#x884C;&#x4E0B;&#x4E00;&#x6B65;&#x7684;&#x9009;&#x62E9;
+          wsize = osize;
+          break;</p>
+<pre><code>
+  &#x8FD8;&#x8BB0;&#x5F97;&#x7B2C;&#x4E00;&#x7BC7;&#x4E2D;&#x8BF4;&#x7684;&#x4E0D;&#x540C;rule&#x89C4;&#x5219;&#x7684;&#x5B9A;&#x5236;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x4F46;&#x662F;&#x8BA1;&#x7B97;&#x7684;&#x6B21;&#x6570;&#x4F1A;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5C31;&#x662F;&#x56E0;&#x4E3A;&#x5F53;&#x524D;step&#x6267;&#x884C;&#x7684;&#x8D77;&#x70B9;&#x4E0D;&#x4E00;&#x6837;
+
+  ![image](../../DevDocumentsPersonal/CEPH/%25E5%25AF%25B9%25E8%25B1%25A1%25E7%25AE%25A1%25E7%2590%2586/.Ceph%2520CRUSH%25E7%25AE%2597%25E6%25B3%2595.assets/diff-rule.png)
+
+  ------
+
+  - **1.1.1.1.1&#x3001;crush_choose_firstn** &#xFF1A;firstn &#x7B97;&#x6CD5;&#x7684;&#x5165;&#x53E3;&#x51FD;&#x6570; 
+
+  &#x53EF;&#x4EE5;&#x8BF4;&#x662F;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x6B65;&#x4E86;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x7684;&#x903B;&#x8F91;&#x5904;&#x7406;&#xFF0C;&#x51B2;&#x7A81;&#x68C0;&#x6D4B;&#x7B49;&#x90FD;&#x5728;&#x8FD9;&#x91CC;
+
+  ```c++
+  /**
+   * crush_choose_firstn - choose numrep distinct items of given type
+   * @map: the crush_map
+   * @bucket: the bucket we are choose an item from
+   * @x: crush input value
+   * @numrep: the number of items to choose
+   * @type: the type of item to choose
+   * @out: pointer to output vector
+   * @outpos: our position in that vector
+   * @out_size: size of the out vector
+   * @tries: number of attempts to make
+   * @recurse_tries: number of attempts to have recursive chooseleaf make
+   * @local_retries: localized retries    
+   * @local_fallback_retries: localized fallback retries    
+   * @recurse_to_leaf: true if we want one device under each item of given type (chooseleaf instead of choose)
+   * @stable: stable mode starts rep=0 in the recursive call for all replicas
+   * @vary_r: pass r to recursive calls
+   * @out2: second output vector for leaf items (if @recurse_to_leaf)
+   * @parent_r: r value passed from the parent
+   */
+  static int crush_choose_firstn(const struct crush_map *map,
+                     struct crush_work *work,
+                     const struct crush_bucket *bucket,
+                     const __u32 *weight, int weight_max,
+                     int x, int numrep, int type,
+                     int *out, int outpos,
+                     int out_size,
+                     unsigned int tries,
+                     unsigned int recurse_tries,
+                     unsigned int local_retries,
+                     unsigned int local_fallback_retries,
+                     int recurse_to_leaf,
+                     unsigned int vary_r,
+                     unsigned int stable,
+                     int *out2,
+                     int parent_r,
+                                 const struct crush_choose_arg *choose_args)
+  {
+      int rep;    // &#x8BA1;&#x6570;&#x5668;&#xFF0C;&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x5DF2;&#x7ECF;&#x9009;&#x62E9;&#x7684;&#x6570;&#x91CF;
+      unsigned int ftotal, flocal;
+      int retry_descent, retry_bucket, skip_rep;
+      const struct crush_bucket *in = bucket;
+      int r;
+      int i;
+      int item = 0;
+      int itemtype;
+      int collide, reject;
+      int count = out_size;
+
+      dprintk(&quot;CHOOSE%s bucket %d x %d outpos %d numrep %d tries %d \
+  recurse_tries %d local_retries %d local_fallback_retries %d \
+  parent_r %d stable %d\n&quot;,
+          recurse_to_leaf ? &quot;_LEAF&quot; : &quot;&quot;,
+          bucket-&gt;id, x, outpos, numrep,
+          tries, recurse_tries, local_retries, local_fallback_retries,
+          parent_r, stable);
+
+      for (rep = stable ? 0 : outpos; rep &lt; numrep &amp;&amp; count &gt; 0 ; rep++) {
+          /* keep trying until we get a non-out, non-colliding item */
+          ftotal = 0;                    // fail total &#x5931;&#x8D25;&#x7684;&#x603B;&#x6B21;&#x6570;
+          skip_rep = 0;                // &#x662F;&#x5426;&#x8DF3;&#x8FC7;&#x8FD9;&#x4E00;&#x6B21;&#x9009;&#x62E9;
+          do {
+              retry_descent = 0;
+              in = bucket;              /* initial bucket */
+
+              /* choose through intervening buckets */
+              flocal = 0;                // &#x5F53;&#x524D;bucket&#x7684;&#x9009;&#x62E9;&#x91CD;&#x8BD5;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x5C40;&#x90E8;&#x91CD;&#x8BD5;&#x6B21;&#x6570;
+              do {
+                  collide = 0;        // &#x5224;&#x65AD;&#x662F;&#x5426;&#x6709;&#x51B2;&#x649E;
+                  retry_bucket = 0;
+                  r = rep + parent_r;        // &#x968F;&#x673A;&#x56E0;&#x5B50;r
+                  /* r&apos; = r + f_total */
+                  r += ftotal;            // &#x5982;&#x679C;&#x9009;&#x62E9;&#x5931;&#x8D25;&#xFF0C;&#x8FD9;&#x91CC;&#x8981;&#x52A0;&#x4E0A;&#x5931;&#x8D25;&#x6B21;&#x6570;&#x518D;&#x8FDB;&#x884C;&#x91CD;&#x8BD5;
+
+                  /* bucket choose */
+                  if (in-&gt;size == 0) {
+                      reject = 1;
+                      goto reject;
+                  }
+                  if (local_fallback_retries &gt; 0 &amp;&amp;
+                      flocal &gt;= (in-&gt;size&gt;&gt;1) &amp;&amp;
+                      flocal &gt; local_fallback_retries)
+                      item = bucket_perm_choose(        // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x540E;&#x5907;&#x9009;&#x62E9;&#x7B97;&#x6CD5;&#xFF0C;&#x4F1A;&#x8BB0;&#x5F55;&#x4E4B;&#x524D;&#x51B2;&#x7A81;&#x8FC7;&#x7684;item&#xFF0C;&#x89E6;&#x53D1;&#x7684;&#x6761;&#x4EF6;&#x6BD4;&#x8F83;&#x82DB;&#x523B;
+                          in, work-&gt;work[-1-in-&gt;id],
+                          x, r);
+                  else
+                      item = crush_bucket_choose(    // &#x8FD9;&#x91CC;&#x4ECE;&#x8F93;&#x5165;&#x7684;bucket&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;item &#x51FA;&#x6765;&#xFF0C;item &#x5C31;&#x662F;bucket&#x7684;id &#x53F7;
+                          in, work-&gt;work[-1-in-&gt;id],
+                          x, r,
+                                                  (choose_args ? &amp;choose_args[-1-in-&gt;id] : 0),
+                                                  outpos);
+                  if (item &gt;= map-&gt;max_devices) {        // &#x5982;&#x679C;&#x9009;&#x51FA;&#x6765;&#x7684;item id &#x6BD4; devices&#x4E2A;&#x6570;&#x8FD8;&#x5927;&#x80AF;&#x5B9A;&#x662F;&#x9519;&#x8BEF;&#x7684;
+                      dprintk(&quot;   bad item %d\n&quot;, item);
+                      skip_rep = 1;
+                      break;
+                  }
+
+                  /* desired type? */
+                  if (item &lt; 0)    // bucket id &#x90FD;&#x662F;&#x5C0F;&#x4E8E;0&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x90A3;&#x9009;&#x51FA;&#x6765;&#x7684;&#x5C31;&#x662F;osd
+                      itemtype = map-&gt;buckets[-1-item]-&gt;type;    
+                  else
+                      itemtype = 0;    // &#x4E0D;&#x7136;&#x7684;&#x8BDD;&#x5C31;&#x662F;osd &#x7C7B;&#x578B;
+                  dprintk(&quot;  item %d type %d\n&quot;, item, itemtype);
+
+                  /* keep going? */
+                  if (itemtype != type) {        // &#x5982;&#x679C;&#x9009;&#x51FA;&#x6765;&#x7684;bucket type &#x8DDF;&#x9884;&#x671F;&#x7684;bucket type&#x4E0D;&#x4E00;&#x6837;
+                      if (item &gt;= 0 ||
+                          (-1-item) &gt;= map-&gt;max_buckets) {
+                          dprintk(&quot;   bad item type %d\n&quot;, type);
+                          skip_rep = 1;
+                          break;
+                      }
+                      in = map-&gt;buckets[-1-item];    // &#x5C06;&#x521A;&#x521A;&#x627E;&#x5230;&#x7684;bucket&#x4F5C;&#x4E3A;&#x4E0B;&#x4E00;&#x6B21;&#x67E5;&#x627E;&#x7684;&#x8F93;&#x5165;&#xFF08;&#x9012;&#x5F52;&#xFF09;
+                      retry_bucket = 1;        // &#x91CD;&#x65B0;&#x9009;&#x62E9;
+                      continue;
+                  }
+                  // &#x5230;&#x8FD9;&#x4E00;&#x6B65;&#x8BC1;&#x660E;&#x627E;&#x5230;&#x7684;&#x662F;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x7684;bucket&#x6216;&#x8005;osd&#xFF0C;&#x8DDF;&#x5DF2;&#x7ECF;&#x627E;&#x5230;&#x7684;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#xFF0C;&#x5982;&#x679C;&#x51B2;&#x7A81;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x67E5;&#x627E;
+                  /* collision? */        
+                  for (i = 0; i &lt; outpos; i++) {
+                      if (out[i] == item) {
+                          collide = 1;        // &#x5224;&#x65AD;&#x9009;&#x62E9;&#x7684;&#x662F;&#x5426;&#x51B2;&#x7A81;
+                          break;
+                      }
+                  }
+
+                  reject = 0;
+                  if (!collide &amp;&amp; recurse_to_leaf) { // &#x5982;&#x679C;&#x9009;&#x51FA;&#x6765;&#x7684;bucket&#x4E0D;&#x51B2;&#x7A81;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x9012;&#x5F52;&#x5230;&#x53F6;&#x8282;&#x70B9;osd
+                      if (item &lt; 0) {                // &#x5982;&#x679C;&#x662F;bucket&#x7C7B;&#x578B;&#x7684;
+                          int sub_r;
+                          if (vary_r)
+                              sub_r = r &gt;&gt; (vary_r-1);
+                          else
+                              sub_r = 0;
+                          if (crush_choose_firstn(
+                                  map,
+                                  work,
+                                  map-&gt;buckets[-1-item],            // &#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x5165;&#x53E3;&#x53D8;&#x6210;&#x4E86;&#x521A;&#x521A;&#x9009;&#x51FA;&#x6765;&#x7684;bucket
+                                  weight, weight_max,
+                                  x, stable ? 1 : outpos+1, 0,
+                                  out2, outpos, count,
+                                  recurse_tries, 0,
+                                  local_retries,
+                                  local_fallback_retries,
+                                  0,
+                                  vary_r,
+                                  stable,
+                                  NULL,
+                                  sub_r,
+                                                              choose_args) &lt;= outpos)
+                              /* didn&apos;t get leaf */
+                              reject = 1;
+                      } else {                // osd
+                          /* we already have a leaf! */
+                          out2[outpos] = item;        // &#x8FD9;&#x4E2A;&#x662F;&#x5E94;&#x7528;&#x5728;&#x9700;&#x8981;&#x9012;&#x5F52;&#x5230;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x8F93;&#x51FA;
+                                  }
+                  }
+
+                  if (!reject &amp;&amp; !collide) {
+                      /* out? */
+                      if (itemtype == 0)
+                          reject = is_out(map, weight,    // &#x8FDB;&#x884C;osd reweight &#x7684;&#x518D;&#x6B21;&#x8FC7;&#x6EE4;
+                                  weight_max,
+                                  item, x);
+                  }
+
+  reject:
+                  if (reject || collide) {    // &#x5982;&#x679C;&#x2018;&#x51B2;&#x7A81;&#x2018;&#x6216;&#x8005;&#x2018;&#x6545;&#x969C;&#x2018;&#x4E86;&#xFF0C;&#x90A3;&#x5C31;&#x91CD;&#x65B0;&#x67E5;&#x627E;&#x968F;&#x673A;&#x56E0;&#x5B50; r &#x9012;&#x589E;
+                      ftotal++;
+                      flocal++;
+
+                      if (collide &amp;&amp; flocal &lt;= local_retries)    // &#x5982;&#x679C;&#x518D;&#x5F53;&#x524D;bucket&#x4E0B;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#x8FD8;&#x8FBE;&#x5230;&#x4E0A;&#x9650;local_retries
+                          /* retry locally a few times */
+                          retry_bucket = 1;
+                      else if (local_fallback_retries &gt; 0 &amp;&amp;
+                           flocal &lt;= in-&gt;size + local_fallback_retries)
+                          /* exhaustive bucket search */
+                          retry_bucket = 1;
+                      else if (ftotal &lt; tries)            
+                          /* then retry descent */
+                          retry_descent = 1;
+                      else
+                          /* else give up */
+                          skip_rep = 1;
+                      dprintk(&quot;  reject %d  collide %d  &quot;
+                          &quot;ftotal %u  flocal %u\n&quot;,
+                          reject, collide, ftotal,
+                          flocal);
+                  }
+              } while (retry_bucket);        // &#x5728;&#x5F53;&#x524D;bucket&#x4E0B;&#x91CD;&#x8BD5;&#x9009;&#x62E9;&#xFF08;&#x5C40;&#x90E8;&#x91CD;&#x8BD5;&#xFF09;&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;&#x90FD;&#x4ECE;&#x5934;&#x5F00;&#x59CB;&#x662F;&#x5F88;&#x6D88;&#x8017;&#x8D44;&#x6E90;&#x7684;
+          } while (retry_descent);        // &#x4ECE;&#x6700;&#x5F00;&#x59CB;&#x7684;bucket&#x5904;&#x5F00;&#x59CB;&#x91CD;&#x65B0;&#x9009;&#x62E9;&#xFF08;&#x4ECE;&#x5934;&#x5F00;&#x59CB;&#xFF09;
+
+          if (skip_rep) {
+              dprintk(&quot;skip rep\n&quot;);
+              continue;
+          }
+
+          dprintk(&quot;CHOOSE got %d\n&quot;, item);
+          out[outpos] = item;
+          outpos++;
+          count--;
+  #ifndef __KERNEL__
+          if (map-&gt;choose_tries &amp;&amp; ftotal &lt;= map-&gt;choose_total_tries)
+              map-&gt;choose_tries[ftotal]++;
+  #endif
+      }
+
+      dprintk(&quot;CHOOSE returns %d\n&quot;, outpos);
+      return outpos;
+  }
+</code></pre><p>  &#x4EE3;&#x7801;&#x4E2D;&#x5DF2;&#x7ECF;&#x52A0;&#x5165;&#x4E86;&#x6BD4;&#x8F83;&#x8BE6;&#x7EC6;&#x7684;&#x6CE8;&#x91CA;&#xFF0C;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x7684;</p>
+<hr>
+<ul>
+<li><p><strong>1.1.1.1.1&#x3001;crush_bucket_choose</strong> </p>
+<pre><code>static int crush_bucket_choose(const struct crush_bucket *in,
+             struct crush_work_bucket *work,
+             int x, int r,
+                         const struct crush_choose_arg *arg,
+                         int position)
+{
+  dprintk(&quot; crush_bucket_choose %d x=%d r=%d\n&quot;, in-&gt;id, x, r);
+  BUG_ON(in-&gt;size == 0);
+  switch (in-&gt;alg) {
+  case CRUSH_BUCKET_UNIFORM:
+      return bucket_uniform_choose(
+          (const struct crush_bucket_uniform *)in,
+          work, x, r);
+  case CRUSH_BUCKET_LIST:
+      return bucket_list_choose((const struct crush_bucket_list *)in,
+                    x, r);
+  case CRUSH_BUCKET_TREE:
+      return bucket_tree_choose((const struct crush_bucket_tree *)in,
+                    x, r);
+  case CRUSH_BUCKET_STRAW:
+      return bucket_straw_choose(
+          (const struct crush_bucket_straw *)in,
+          x, r);
+  case CRUSH_BUCKET_STRAW2:
+      return bucket_straw2_choose(
+          (const struct crush_bucket_straw2 *)in,
+          x, r, arg, position);
+  default:
+      dprintk(&quot;unknown bucket %d alg %d\n&quot;, in-&gt;id, in-&gt;alg);
+      return in-&gt;items[0];
+  }
+}
+</code></pre><p>&#x51FD;&#x6570;&#x91CC;&#x9762;&#x5C31;&#x662F;&#x6839;&#x636E;crush map &#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x9009;&#x62E9;&#xFF0C;L&#x7248;&#x4E4B;&#x540E;&#x9ED8;&#x8BA4;&#x90FD;&#x662F;&#x4F7F;&#x7528;straw2&#x7B97;&#x6CD5;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x6682;&#x65F6;&#x4E0D;&#x6DF1;&#x7A76;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x540E;&#x9762;&#x6709;&#x65F6;&#x95F4;&#x597D;&#x597D;&#x7814;&#x7A76;&#x4E00;&#x4E0B;PG&#x5206;&#x88C2;&#x548C;straw2&#x7B97;&#x6CD5;&#x5427;&#xFF0C;&#x5F53;&#x9009;&#x51FA;osd&#x4E4B;&#x540E;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5BF9;osd&#x8FDB;&#x884C; <strong>reweight</strong> &#x7684;&#x8FC7;&#x6EE4;&#xFF0C; &#x662F;&#x5728; <strong>is_out</strong> &#x51FD;&#x6570;&#x4E2D;&#x5B9E;&#x73B0;&#x7684;</p>
+</li>
+</ul>
+<hr>
+<p>  &#x3001;is_out** &#xFF1A; &#x8FDB;&#x884C; osd reweight &#x7684;&#x518D;&#x6B21;&#x8FC7;&#x6EE4; </p>
+<pre><code>  /*
+   * true if device is marked &quot;out&quot; (failed, fully offloaded)
+   * of the cluster
+   * weight &#x662F;reweight, weight_max &#x662F;osd&#x4E2A;&#x6570;
+   */
+  static int is_out(const struct crush_map *map,
+            const __u32 *weight, int weight_max,
+            int item, int x)
+  {
+      if (item &gt;= weight_max)            // &#x8BF4;&#x660E;&#x4E0D;&#x5B58;&#x5728;&#x8FD9;&#x4E2A;osd
+          return 1;
+      if (weight[item] &gt;= 0x10000)    // reweight &#x4E3A;1 
+          return 0;
+      if (weight[item] == 0)            // reweight &#x4E3A; 0 
+          return 1;
+      if ((crush_hash32_2(CRUSH_HASH_RJENKINS1, x, item) &amp; 0xffff)    // &#x539F;&#x6765;&#x7684;item&#x518D;hash&#x4E00;&#x6B21;&#xFF0C;&#x7136;&#x540E;&#x2018;&#x4E0E;&#x2018;&#x64CD;&#x4F5C;&#x622A;&#x53D6;&#x6700;&#x540E;&#x7684;32bit&#x6570;&#x5B57;&#xFF0C;
+          &lt; weight[item])                                                // &#x8DDF; reweight &#x505A;&#x6BD4;&#x8F83;&#x6765;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x8981;&#x7528;&#x8FD9;&#x4E2A;osd&#xFF0C;                                                                    // &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;reweight&#x8D8A;&#x5927;&#x8D8A;&#x5BB9;&#x6613;&#x9009;&#x4E0A;
+          return 0;
+      return 1;
+  }
+</code></pre><p>  &#x7ECF;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x9009;&#x62E9;&#x6700;&#x7EC8;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230; osd &#x5217;&#x8868;&#x4E86;</p>
+<h3 id="&#x56DB;-&#x603B;&#x7ED3;">&#x56DB;. &#x603B;&#x7ED3;</h3>
+<hr>
+<p>&#x6700;&#x540E;&#x7528;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x96C6;&#x7FA4;&#x7684;rule&#x8FD8;&#x539F;&#x4E00;&#x4E0B;&#x9009;&#x62E9;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x770B;&#x770B;crushmap&#x6709;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x5316;&#x7684;&#x7A7A;&#x95F4;</p>
+<pre><code class="lang-c++">    rule replicated_rule {
+        id <span class="hljs-number">0</span>
+        type replicated
+        min_size <span class="hljs-number">1</span>
+        max_size <span class="hljs-number">10</span>
+        step take <span class="hljs-keyword">default</span>
+        step choose firstn <span class="hljs-number">0</span> type osd
+        step emit
+    }
+</code></pre>
+<ul>
+<li>\1. &#x4ECE; root &#x5F00;&#x59CB;&#x9009;&#x62E9;bucket&#xFF0C;&#x9996;&#x5148;root&#x7684;item&#x662F;host&#xFF0C;&#x6240;&#x4EE5;&#x9009;&#x62E9;&#x4E86;&#x4E00;&#x4E2A;host&#x51FA;&#x6765;&#xFF0C;&#x53D1;&#x73B0;&#x4E0D;&#x662F;&#x60F3;&#x8981;&#x7684;type &#xFF08;osd&#xFF09;&#xFF0C;&#x90A3;&#x5C31;&#x9012;&#x5F52;&#xFF0C;&#x4ECE;&#x9009;&#x51FA;&#x6765;&#x7684;host&#x5F00;&#x59CB;&#xFF0C;&#x7EE7;&#x7EED;&#x627E;&#xFF0C;&#x627E;&#x5230;&#x4E86;&#x4E00;&#x4E2A;osd</li>
+<li>\2. &#x5BF9;&#x627E;&#x5230;&#x7684;&#x8FD9;&#x4E2A;osd&#xFF0C;&#x8FDB;&#x884C;&#x51B2;&#x7A81;&#x68C0;&#x6D4B;&#xFF0C;&#x770B;&#x770B;&#x662F;&#x4E0D;&#x662F;&#x5DF2;&#x7ECF;&#x9009;&#x8FC7;&#x4E86;&#xFF0C;&#x6CA1;&#x6709;&#x9009;&#x8FC7;&#xFF0C;&#x518D;&#x8FDB;&#x884C;reweight&#x7684;&#x8FC7;&#x6EE4;&#xFF0C;&#x56E0;&#x4E3A;osd&#x9ED8;&#x8BA4;reweight&#x662F; 1&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x4E5F;&#x5C31;&#x8D70;&#x8D70;&#x8FC7;&#x573A;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;osd&#x4E86;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;osd&#x653E;&#x5230;&#x8F93;&#x51FA;&#x6570;&#x7EC4;&#x4E2D;&#x3002;</li>
+<li>\3. &#x5F00;&#x59CB;&#x9009;&#x62E9;&#x7B2C;&#x4E8C;&#x4E2A;osd, &#x8FD9;&#x91CC;&#x91CD;&#x590D; &#x7B2C;&#x4E00;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B65;&#x9AA4;&#x3002;</li>
+</ul>
+<p>&#x770B;&#x770B;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x53EA;&#x6709;&#x4E00;&#x4E2A;host&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E00;&#x6B65;&#x9AA4;&#x662F;&#x4E0D;&#x662F;&#x91CD;&#x590D;&#x7684;&#x505A;&#x4E86;&#x4E09;&#x6B21;? &#x5982;&#x679C;&#x6211;&#x4EEC;&#x5C06;&#x9009;&#x51FA;&#x6765;&#x7684;host&#x4F5C;&#x4E3A;&#x6BCF;&#x4E00;&#x6B21;&#x9009;&#x62E9;osd&#x7684;&#x5165;&#x53E3;&#x70B9;&#xFF0C;&#x8FD9;&#x6837;&#x662F;&#x4E0D;&#x662F;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x590D;&#x53BB;&#x627E;host&#x5566;&#xFF1F;&#x7406;&#x89E3;&#x5B8C;&#x9009;&#x62E9;&#x7684;&#x539F;&#x7406;&#x540E;&#xFF0C;&#x53D1;&#x6325;&#x60F3;&#x8C61;&#x529B;&#xFF0C;&#x770B;&#x770B;&#x5982;&#x4F55;&#x5B9A;&#x5236;crushmap&#x80FD;&#x505A;&#x5230;&#x66F4;&#x9AD8;&#x6548;&#xFF0C;&#x66F4;&#x53EF;&#x9760;&#x5427;&#x3002;</p>
+<h3 id="&#x4E94;-&#x53C2;&#x8003;&#x6587;&#x6863;">&#x4E94;. &#x53C2;&#x8003;&#x6587;&#x6863;</h3>
+<ul>
+<li>&#x300A;ceph &#x503C;rados&#x8BBE;&#x8BA1;&#x539F;&#x7406;&#x4E0E;&#x5B9E;&#x73B0;&#x300B;</li>
+<li>&#x300A;ceph &#x6E90;&#x7801;&#x5206;&#x6790;&#x300B;</li>
+<li><a href="https://github.com/ceph/ceph/tree/v12.2.8/src/crush" target="_blank">ceph &#x6E90;&#x7801;v12.2.8</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第五章:PG到OSD">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5.1 CRUSH算法","level":"1.7.1","depth":2,"previous":{"title":"第五章:PG到OSD","level":"1.7","depth":1,"path":"part5_rados/README.md","ref":"part5_rados/README.md","articles":[{"title":"5.1 CRUSH算法","level":"1.7.1","depth":2,"path":"part5_rados/1.crush.md","ref":"part5_rados/1.crush.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"part5_rados/1.crush.md","mtime":"2022-04-10T09:32:29.443Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-10T09:41:04.565Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
